@@ -35,6 +35,9 @@ void Game::Update() {
     if (m_elapsed >= time_step) {
         m_snake.Tick();
         m_world.Update(m_snake);
+        if (m_world.isAppleEaten()) {
+            m_textbox.Add("You ate an apple! You feel longer!");
+        }
         m_elapsed -= time_step;
         if(m_snake.HasLost()){
             m_snake.Reset();
@@ -48,6 +51,7 @@ void Game::Render() {
     m_world.Render(*m_window.GetRenderWindow());
     m_snake.Render(*m_window.GetRenderWindow());
     m_textbox.Render(*m_window.GetRenderWindow());
+
     m_window.EndDraw();
 }
 

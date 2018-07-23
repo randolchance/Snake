@@ -21,8 +21,7 @@ Textbox::Textbox(int l_visible, int l_charSize, int l_width, sf::Vector2f l_scre
 
 Textbox::~Textbox() { Clear(); }
 
-void Textbox::Setup(int l_visible, int l_charSize,
-                    int l_width, sf::Vector2f l_screenPos) {
+void Textbox::Setup(int l_visible, unsigned int l_charSize, int l_width, sf::Vector2f l_screenPos) {
     m_numVisible = l_visible;
     sf::Vector2f l_offset(2.0f, 2.0f);
     m_font.loadFromFile("arial.ttf");
@@ -31,8 +30,7 @@ void Textbox::Setup(int l_visible, int l_charSize,
     m_content.setCharacterSize(l_charSize);
     m_content.setColor(sf::Color::White);
     m_content.setPosition(l_screenPos + l_offset);
-    m_backdrop.setSize(sf::Vector2f(
-            l_width, (l_visible * (l_charSize * 1.2f))));
+    m_backdrop.setSize(sf::Vector2f(l_width, (l_visible * (l_charSize * 1.2f))));
     m_backdrop.setFillColor(sf::Color(90,90,90,90));
     m_backdrop.setPosition(l_screenPos);
 }
@@ -45,12 +43,12 @@ void Textbox::Add(std::string l_message){
 
 void Textbox::Clear(){ m_messages.clear(); }
 
-void Textbox::Render(sf::RenderWindow l_wind) {
+void Textbox::Render(sf::RenderWindow& l_wind) {
     std::string l_content;
     for(auto &itr : m_messages) {
         l_content.append(itr+"\n");
     }
-    if(l_content != ""){
+    if(!l_content.empty()){
         m_content.setString(l_content);
         l_wind.draw(m_backdrop);
         l_wind.draw(m_content);

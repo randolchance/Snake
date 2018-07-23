@@ -15,12 +15,12 @@ World::World(sf::Vector2u l_windSize){
 
     for(int i = 0; i < 4; ++i) {
         m_bounds[i].setFillColor(sf::Color(150,0,0));
-        if(!((i + 1) % 2)) {
+        if (!((i + 1) % 2)) {
             m_bounds[i].setSize(sf::Vector2f(m_windowSize.x, m_blockSize));
         } else {
             m_bounds[i].setSize(sf::Vector2f(m_blockSize, m_windowSize.y));
         }
-        if(i < 2){
+        if (i < 2) {
             m_bounds[i].setPosition(0,0);
         } else {
             m_bounds[i].setOrigin(m_bounds[i].getSize()); // Sets origin to bottom-right corner of wall
@@ -33,16 +33,19 @@ World::~World() { }
 void World::RespawnApple() {
     int maxX = (m_windowSize.x / m_blockSize) - 2;
     int maxY = (m_windowSize.y / m_blockSize) - 2;
-    m_item = sf::Vector2i(
-            rand() % maxX + 1, rand() % maxY + 1);
+    m_item = sf::Vector2i(rand() % maxX + 1, rand() % maxY + 1);
     m_appleShape.setPosition(m_item.x * m_blockSize, m_item.y * m_blockSize);
 }
 
+bool World::isAppleEaten() { return apple_eaten; }
+
 void World::Update(Snake& l_player){
-    if(l_player.GetPosition() == m_item){
+    apple_eaten = false;
+    if(l_player.GetPosition() == m_item) {
         l_player.Extend();
         l_player.IncreaseScore();
         RespawnApple();
+        apple_eaten = true;
     }
     int gridSize_x = m_windowSize.x / m_blockSize;
     int gridSize_y = m_windowSize.y / m_blockSize;
@@ -53,7 +56,7 @@ void World::Update(Snake& l_player){
 }
 
 void World::Render(sf::RenderWindow& l_window){
-    for (auto side : m_bounds) {
+    for (const auto& side : m_bounds) {
         l_window.draw(side);
     }
     l_window.draw(m_appleShape);
