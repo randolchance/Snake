@@ -53,8 +53,8 @@ void World::Update(Snake& l_player){
 }
 
 void World::Render(sf::RenderWindow& l_window){
-    for (int i = 0; i < 4; ++i){
-        l_window.draw(m_bounds[i]);
+    for (auto side : m_bounds) {
+        l_window.draw(side);
     }
     l_window.draw(m_appleShape);
 }
