@@ -7,6 +7,7 @@
 #include "Window.h"
 #include "World.h"
 #include "Snake.h"
+#include "Textbox.h"
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -24,6 +25,7 @@ private:
     World m_world;
     Snake m_snake;
     Window m_window;
+    Textbox m_textbox;
     sf::Clock m_clock;
     sf::Time m_elapsed;
 };

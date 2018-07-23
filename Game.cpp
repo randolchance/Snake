@@ -6,7 +6,10 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
-Game::Game(): m_window("Snake", sf::Vector2u(800,600)),m_snake(m_world.GetBlockSize()),m_world(sf::Vector2u(800,600)) { }
+Game::Game(): m_window("Snake", sf::Vector2u(800,600)),m_snake(m_world.GetBlockSize()),m_world(sf::Vector2u(800,600)) {
+    m_textbox.Setup(5,14,350,sf::Vector2f(225,0));
+    m_textbox.Add("Seeded random number generator with: " + std::to_string(time(NULL)));
+}
 
 Game::~Game() { }
 
@@ -44,6 +47,7 @@ void Game::Render() {
 // Render here.
     m_world.Render(*m_window.GetRenderWindow());
     m_snake.Render(*m_window.GetRenderWindow());
+    m_textbox.Render(*m_window.GetRenderWindow());
     m_window.EndDraw();
 }
 
