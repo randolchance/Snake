@@ -3,4 +3,4 @@ project(Snake)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Snake main.cpp Snake.h Snake.cpp World.h Window.h World.cpp Window.cpp Game.h Game.cpp)
+add_executable(Snake main.cpp Snake.h Snake.cpp World.h Window.h World.cpp Window.cpp Game.h Game.cpp Textbox.h)
