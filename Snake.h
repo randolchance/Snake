@@ -43,6 +43,9 @@ public:
     void Move(); // Movement method
     void Tick(); // Update method
     void Cut(int l_segments); // Method for cutting the snake
+    bool WasBit(); // Method for informing Game (display msg)
+    void ResetBit(); // Method for clearing the Snake::m_was_bit flag
+
     void Render(sf::RenderWindow& l_window);
 private:
     void CheckCollision(); // Checking for collisions
@@ -54,6 +57,7 @@ private:
     int m_lives; // Lives.
     int m_score; // Score
     bool m_lost; // Losing state
+    bool m_was_bit; // Recently cut
     sf::RectangleShape m_bodyRect; // Shape used in rendering
 };
 

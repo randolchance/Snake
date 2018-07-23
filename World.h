@@ -26,7 +26,7 @@ private:
     sf::Vector2u m_windowSize;
     sf::Vector2i m_item;
     int m_blockSize;
-    bool apple_eaten;
+    bool m_apple_eaten;
 
     sf::CircleShape m_appleShape;
     sf::RectangleShape m_bounds[4];

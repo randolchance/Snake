@@ -37,15 +37,15 @@ void World::RespawnApple() {
     m_appleShape.setPosition(m_item.x * m_blockSize, m_item.y * m_blockSize);
 }
 
-bool World::isAppleEaten() { return apple_eaten; }
+bool World::isAppleEaten() { return m_apple_eaten; }
 
 void World::Update(Snake& l_player){
-    apple_eaten = false;
+    m_apple_eaten = false;
     if(l_player.GetPosition() == m_item) {
         l_player.Extend();
         l_player.IncreaseScore();
         RespawnApple();
-        apple_eaten = true;
+        m_apple_eaten = true;
     }
     int gridSize_x = m_windowSize.x / m_blockSize;
     int gridSize_y = m_windowSize.y / m_blockSize;

@@ -37,9 +37,15 @@ void Game::Update() {
         m_world.Update(m_snake);
         if (m_world.isAppleEaten()) {
             m_textbox.Add("You ate an apple! You feel longer!");
+            m_textbox.Add(std::to_string(m_snake.GetScore()) + " pts");
+        } else if (m_snake.WasBit()) {
+            m_textbox.Add("You bit your tail off!");
+            m_snake.ResetBit();
         }
         m_elapsed -= time_step;
         if(m_snake.HasLost()){
+            m_textbox.Clear();
+            m_textbox.Add("You heckin' died!");
             m_snake.Reset();
         }
     }

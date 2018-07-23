@@ -24,6 +24,7 @@ void Snake::Reset() {
     m_speed = 15;
     m_lives = 3;
     m_score = 0;
+    m_was_bit = false;
     m_lost = false;
 }
 
@@ -129,7 +130,12 @@ void Snake::Cut(int l_segments) {
     }
     --m_lives;
     if (!m_lives) { Lose(); return; }
+    m_was_bit = true;
 }
+
+bool Snake::WasBit() { return m_was_bit; }
+
+void Snake::ResetBit() { m_was_bit = false; }
 
 void Snake::Render(sf::RenderWindow& l_window){
     if (m_snakeBody.empty()) return;

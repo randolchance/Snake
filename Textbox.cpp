@@ -48,7 +48,7 @@ void Textbox::Render(sf::RenderWindow& l_wind) {
     for(auto &itr : m_messages) {
         l_content.append(itr+"\n");
     }
-    if(!l_content.empty()){
+    if(!l_content.empty()) {
         m_content.setString(l_content);
         l_wind.draw(m_backdrop);
         l_wind.draw(m_content);
