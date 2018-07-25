@@ -15,12 +15,18 @@ class Game{
 public:
     Game();
     ~Game();
-    void HandleInput();
+    //void HandleInput(); OBSOLETE
     void Update();
     void Render();
     Window* GetWindow();
     sf::Time GetElapsed();
     void RestartClock();
+
+    void MoveLeft(EventDetails*);
+    void MoveRight(EventDetails*);
+    void MoveUp(EventDetails*);
+    void MoveDown(EventDetails*);
+
 private:
     World m_world;
     Snake m_snake;

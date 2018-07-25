@@ -30,3 +30,5 @@
 # Misc.
 .*
 /cmake-build-debug/*
+!.gitignore
+sfml-app*

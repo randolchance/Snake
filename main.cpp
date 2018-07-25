@@ -11,7 +11,7 @@ int main(int argc, void** argv[]){
 
     while(!game.GetWindow()->IsDone()){
     // Game loop.
-        game.HandleInput();
+        //game.HandleInput();
         game.Update();
         game.Render();
         game.RestartClock(); // Restarting our clock.
