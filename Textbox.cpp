@@ -22,6 +22,7 @@ Textbox::Textbox(int l_visible, int l_charSize, int l_width, sf::Vector2f l_scre
 Textbox::~Textbox() { Clear(); }
 
 void Textbox::Setup(int l_visible, unsigned int l_charSize, int l_width, sf::Vector2f l_screenPos) {
+    m_hidden = true;
     m_numVisible = l_visible;
     sf::Vector2f l_offset(2.0f, 2.0f);
     m_font.loadFromFile("arial.ttf");
@@ -44,6 +45,7 @@ void Textbox::Add(std::string l_message){
 void Textbox::Clear(){ m_messages.clear(); }
 
 void Textbox::Render(sf::RenderWindow& l_wind) {
+    if (m_hidden) return;
     std::string l_content;
     for(auto &itr : m_messages) {
         l_content.append(itr+"\n");

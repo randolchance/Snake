@@ -20,7 +20,7 @@ enum class Direction{None, Up, Down, Left, Right};
 
 class Snake {
 public:
-    Snake(int l_blockSize);
+    Snake(int l_blockSize, int l_speed);
     ~Snake();
 
     // Helper Methods

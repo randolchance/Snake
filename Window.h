@@ -11,7 +11,7 @@
 
 #include "EventManager.h"
 
-class Window{
+class Window {
 public:
     Window();
     Window(const std::string& l_title,const sf::Vector2u& l_size);
@@ -22,13 +22,13 @@ public:
     bool IsDone();
     bool IsFullscreen();
     sf::Vector2u GetWindowSize();
-    void ToggleFullscreen(EventDetails* l_details);
+    void ToggleFullscreen(EventDetails* l_details = nullptr);
     void Draw(sf::Drawable& l_drawable);
     sf::RenderWindow* GetRenderWindow();
 
     bool IsFocused();
     EventManager* GetEventManager();
-    void Close(EventDetails* l_details);
+    void Close(EventDetails* l_details = nullptr);
 private:
     void Setup(const std::string& l_title, const sf::Vector2u& l_size);
     void Destroy();

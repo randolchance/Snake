@@ -9,7 +9,8 @@
 
 State_Game::State_Game(StateManager* l_stateManager): BaseState(l_stateManager),
                                                       m_snake(m_world.GetBlockSize(),15),
-                                                      m_world(sf::Vector2u(800,600)) { }
+                                                      m_world(sf::Vector2u(800,600)),
+                                                      m_textboxHidden(false) { }
 
 void State_Game::OnCreate() {
     EventManager* evMgr = m_stateMgr->GetContext()->m_eventManager;
@@ -21,7 +22,7 @@ void State_Game::OnCreate() {
     evMgr->AddCallback(StateType::Game, "MoveDown", &State_Game::MoveDown, this);
     evMgr->AddCallback(StateType::Game, "Key_Tab", &State_Game::ToggleTextbox, this);
 
-    m_stateMgr->GetContext()->m_textbox->SetHidden(false);
+    m_stateMgr->GetContext()->m_textbox->SetHidden(m_textboxHidden);
 }
 
 void State_Game::OnDestroy() {
@@ -86,7 +87,8 @@ void State_Game::MoveDown(EventDetails* l_details) {
 }
 void State_Game::ToggleTextbox(EventDetails* l_details) {
     m_stateMgr->GetContext()->m_textbox->ToggleHidden();
+    m_textboxHidden = m_stateMgr->GetContext()->m_textbox->IsHidden();
 }
 
-void State_Game::Activate() { m_stateMgr->GetContext()->m_textbox->SetHidden(false); }
+void State_Game::Activate() { m_stateMgr->GetContext()->m_textbox->SetHidden(m_textboxHidden); }
 void State_Game::Deactivate() { m_stateMgr->GetContext()->m_textbox->SetHidden(true); }

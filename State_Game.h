@@ -32,6 +32,7 @@ private:
     World m_world;
     Snake m_snake;
     sf::Time m_time;
+    bool m_textboxHidden;
 };
 
 #endif //SNAKE_STATE_GAME_H

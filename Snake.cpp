@@ -5,8 +5,9 @@
 #include <SFML/Graphics.hpp>
 #include "Snake.h"
 
-Snake::Snake(int l_blockSize) {
+Snake::Snake(int l_blockSize, int l_speed) {
     m_size = l_blockSize;
+    m_speed = l_speed;
     m_bodyRect.setSize(sf::Vector2f(m_size - 1, m_size - 1));
     Reset();
 }
@@ -21,7 +22,6 @@ void Snake::Reset() {
     m_snakeBody.push_back(SnakeSegment(5,5));
 
     SetDirection(Direction::None); // Start off idle
-    m_speed = 15;
     m_lives = 3;
     m_score = 0;
     m_was_bit = false;

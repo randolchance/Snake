@@ -14,7 +14,7 @@ int main(int argc, void** argv[]){
         //game.HandleInput();
         game.Update();
         game.Render();
-        game.RestartClock(); // Restarting our clock.
+        game.LateUpdate();
     }
 
     return 0;

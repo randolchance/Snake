@@ -8,6 +8,7 @@
 #include "World.h"
 #include "Snake.h"
 #include "Textbox.h"
+#include "StateManager.h"
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -21,19 +22,15 @@ public:
     Window* GetWindow();
     sf::Time GetElapsed();
     void RestartClock();
-
-    void MoveLeft(EventDetails*);
-    void MoveRight(EventDetails*);
-    void MoveUp(EventDetails*);
-    void MoveDown(EventDetails*);
+    void LateUpdate();
 
 private:
-    World m_world;
-    Snake m_snake;
     Window m_window;
     Textbox m_textbox;
     sf::Clock m_clock;
     sf::Time m_elapsed;
+    StateManager m_stateManager;
+    SharedContext m_context;
 };
 
 #endif //SNAKE_GAME_H
